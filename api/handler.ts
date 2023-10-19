@@ -13,6 +13,8 @@ export default function handler(
             return response.redirect(301, "https://www.appwrite.careers");
         case "storage.appwrite.io":
             return response.redirect(301, "https://appwrite.store");
+        case "redirects-lilac.vercel.app":
+            return response.redirect(301, "https://www.appwrite.io" + request.url);
         default:
             return response.redirect(301, "https://www.appwrite.io");
     }
