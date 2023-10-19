@@ -4,18 +4,17 @@ export default function handler(
     request: VercelRequest,
     response: VercelResponse
 ) {
+    const createRedirect = (url: string) => response.redirect(301, url + (request.url ?? ""));
     switch (request.headers["x-forwarded-host"]) {
         case "appwrite.online":
         case "is.appwrite.online":
         case "status.appwrite.io":
-            return response.redirect(301, "https://www.appwrite.online");
+            return createRedirect("https://www.appwrite.online");
         case "careers.appwrite.io":
-            return response.redirect(301, "https://www.appwrite.careers");
+            return createRedirect("https://www.appwrite.careers");
         case "storage.appwrite.io":
-            return response.redirect(301, "https://appwrite.store");
-        case "redirects-lilac.vercel.app":
-            return response.redirect(301, "https://www.appwrite.io" + request.url);
+            return createRedirect("https://appwrite.store");
         default:
-            return response.redirect(301, "https://www.appwrite.io");
+            return createRedirect("https://www.appwrite.io");
     }
 }
