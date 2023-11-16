@@ -8,8 +8,9 @@ export default function handler(
     switch (request.headers["x-forwarded-host"]) {
         case "appwrite.online":
         case "is.appwrite.online":
+        case "www.appwrite.online":
         case "status.appwrite.io":
-            return createRedirect("https://www.appwrite.online");
+            return createRedirect("https://status.appwrite.online");
         case "appwrite.careers":
         case "careers.appwrite.io":
             return createRedirect("https://www.appwrite.careers");
